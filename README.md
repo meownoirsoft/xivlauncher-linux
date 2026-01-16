@@ -21,7 +21,7 @@ This AppImage is a portable, standalone version of XIVLauncher for Linux users.
 ### 1. **Download the AppImage**
 
 ```bash
-wget https://github.com/meownoirsoft/XIV-Launcher-AppImage/releases/latest/download/XIVLauncher-x86_64.AppImage
+wget https://github.com/meownoirsoft/xivlauncher-linux/releases/latest/download/XIVLauncher-x86_64.AppImage
 ```
 
 ### 2. Make it executable
