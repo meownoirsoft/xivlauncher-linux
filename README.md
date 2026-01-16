@@ -9,15 +9,16 @@ This repository contains a custom build of XIVLauncher Core with the latest Dala
 
 ## Installation
 
-1. Download the `XIVLauncher-x86_64.AppImage` file
+1. Download the `XIVLauncher-x86_64.AppImage` file to your home directory (or any location you prefer)
 2. Make it executable:
    ```bash
-   chmod +x XIVLauncher-x86_64.AppImage
+   chmod +x ~/XIVLauncher-x86_64.AppImage
    ```
 3. (Optional) Copy the desktop file to your desktop or applications directory:
    ```bash
    cp XIVLauncher.Core.desktop ~/Desktop/
    ```
+   **Note:** The desktop file uses `$HOME` which will automatically expand to your home directory. If you placed the AppImage in a different location, edit the desktop file and replace `$HOME` with the actual path to where you stored the AppImage.
 
 ## Usage
 
