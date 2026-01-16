@@ -1,0 +1,9 @@
+# Ignore everything except what we want to track
+*
+
+# But track these files
+!.gitignore
+!README.md
+!XIVLauncher-x86_64.AppImage
+!XIVLauncher.Core.desktop
+

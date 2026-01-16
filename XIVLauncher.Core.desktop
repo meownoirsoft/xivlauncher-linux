@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=XIVLauncher Core
+Comment=Cross-platform launcher for Final Fantasy XIV with Dalamud support
+Exec=/home/sym/XIVLauncher.Core/src/XIVLauncher.Core/bin/Release/net8.0/linux-x64/XIVLauncher.Core
+Icon=/home/sym/XIVLauncher.Core/src/XIVLauncher.Core/bin/Release/net8.0/linux-x64/publish/xivlauncher.png
+Terminal=false
+Categories=Game;
+StartupNotify=true
+MimeType=
+
