@@ -1,155 +1,150 @@
 # XIVLauncher for Linux (AppImage)
 
-A portable AppImage build of [XIVLauncher](https://github.com/goatcorp/FFXIVQuickLauncher) for Linux, designed to make launching **Final Fantasy XIV** easier without needing the official launcher.
+A portable AppImage distribution of XIVLauncher that allows Linux users to run Final Fantasy XIV without needing the official launcher or compiling the project themselves.
 
-This version was built and tested on **Linux Mint 22**, but it should run on any recent Linux distribution with basic dependencies.
-
----
-
-## 🐧 What Is This?
-
-This AppImage is a portable, standalone version of XIVLauncher for Linux users.
-
-- ✅ No need to compile
-- ✅ No root install
-- ✅ Just download, `chmod +x`, and run!
+This repository provides prebuilt AppImage releases for convenience and portability across modern Linux distributions.
 
 ---
 
-## 🚀 Getting Started
+## Why This Exists
 
-### 1. **Download the AppImage**
+Running XIVLauncher on Linux typically requires compiling the project manually and configuring dependencies. It is a nightmare.
+
+For many users this creates friction.
+
+This project packages the launcher as a **portable AppImage**, allowing users to simply download and run the application with minimal setup.
+
+### Benefits:
+
+- No compilation required
+- No root installation required
+- Works across most modern Linux distributions
+
+---
+
+## What This Provides
+
+• Prebuilt AppImage releases of XIVLauncher  
+• Portable launcher distribution for Linux users  
+• Simplified installation process for Final Fantasy XIV players  
+
+The AppImage can be downloaded and executed directly without modifying system packages.
+
+---
+
+## Quick Start
+
+### Download
 
 ```bash
 wget https://github.com/meownoirsoft/xivlauncher-linux/releases/latest/download/XIVLauncher-x86_64.AppImage
-```
-
-### 2. Make it executable
-
-```bash
+# Make executable
 chmod +x XIVLauncher-x86_64.AppImage
-```
-
-### 3. Run it
-
-```bash
+# Run
 ./XIVLauncher-x86_64.AppImage
 ```
 
-First-time setup may take a few minutes as the launcher configures itself and downloads necessary files.
+On first launch the launcher may download additional files and configure itself.
 
-### 4. (Optional) Desktop File
+# Optional Desktop Integration
 
-A desktop entry file (`XIVLauncher.Core.desktop`) is included for easy launching from your desktop or applications menu. To use it:
+A desktop entry file is included for launching from your desktop environment.
 
-```bash
-cp XIVLauncher.Core.desktop ~/Desktop/
+```cp XIVLauncher.Core.desktop ~/Desktop/```
+
+If the AppImage is stored in a different directory, edit the desktop file and update the path.
+
+# Requirements
+
+### Recommended environment:
+
+Steam version of Final Fantasy XIV
+Vulkan-compatible GPU drivers
+Optional dependency for faster patching:
 ```
-
-**Note:** The desktop file uses `$HOME` which will automatically expand to your home directory. If you placed the AppImage in a different location, edit the desktop file and replace `$HOME` with the actual path to where you stored the AppImage.
-
----
-
-### ⚙️ Requirements
-
-🎮 Steam version of FFXIV (optional but recommended)
-
-✅ Vulkan drivers
-
-✅ aria2 installed (for faster patching):
-
-```bash
 sudo apt install aria2
 ```
 
----
+### Troubleshooting
+aria2 not found
 
-### 🧯 Troubleshooting
+### Install aria2:
 
-❗️"An error occurred trying to start process 'aria2c'"
+```sudo apt install aria2```
 
-Install aria2:
+Or disable it in launcher settings.
 
-```bash
-sudo apt install aria2
-```
+### DirectX 11 crash or blank screen
 
-Or disable it in: Settings > Application > Use aria2 for patching.
+Ensure you're using:
+- Proton-GE via Steam
+- Wine with DXVK and Vulkan support
 
-❗️"DirectX 11 crashes or blank screen"
+Alternative launch option:
 
-Make sure you're using the latest Proton-GE via Steam or use Wine with DXVK and Vulkan support.
-
-You can also launch with:
-
-```bash
-PROTON_USE_WINED3D=1 ./XIVLauncher-x86_64.AppImage
-```
-
-For testing graphics backend differences.
-
-❗️"RPC service crashes" (or launcher doesn't open)
+```PROTON_USE_WINED3D=1 ./XIVLauncher-x86_64.AppImage```
+Launcher fails to start
 
 Ensure libfuse2 is installed:
 
-```bash
-sudo apt install libfuse2
+```sudo apt install libfuse2```
+AppImage fails to run
+
+Try:
+
 ```
-
-Or try launching with `--no-sandbox`
-
-❗️AppImage doesn't run
-
-Try these:
-
-```bash
 chmod +x XIVLauncher-x86_64.AppImage
 ./XIVLauncher-x86_64.AppImage
 ```
 
-Or:
+Or extract manually:
 
-```bash
+```
 ./XIVLauncher-x86_64.AppImage --appimage-extract
 ```
 
----
+### Build Information
 
-## 🛠 Build Information
+Built from:
 
-- Built from: [XIVLauncher.Core](https://github.com/goatcorp/XIVLauncher.Core)
-- Target Framework: .NET 8.0
-- Platform: Linux x86_64
-- Dalamud: Automatically fetches latest version (currently 14.0.1.0)
+XIVLauncher.Core
 
-### Build Instructions (for devs)
+Environment:
 
-Want to build your own?
+.NET 8.0
 
-- Clone the source repo
-- Build with dotnet publish
-- Place binaries inside XIVLauncher.AppDir/usr/bin
-- Add .desktop file and run.sh
-- Use appimagetool to package:
+Linux x86_64
 
-```bash
+Dalamud plugins are automatically fetched by the launcher.
+
+### Building the AppImage
+
+Developers can reproduce the build with the following steps.
+
+Clone the upstream repository
+
+Build the launcher:
+
+dotnet publish
+
+Place binaries into the AppDir:
+
+XIVLauncher.AppDir/usr/bin
+
+Package using appimagetool:
+
 ./appimagetool-x86_64.AppImage XIVLauncher.AppDir
-```
+Credits
 
----
+This project builds upon the work of several upstream projects:
 
-## ❤️ Credit
+- goatcorp/FFXIVQuickLauncher
+- squirrel-labs Linux support
 
-- Based on the amazing work by [goatcorp/FFXIVQuickLauncher](https://github.com/goatcorp/FFXIVQuickLauncher)
-- Linux support enhanced by squirrel-labs
-- This AppImage build maintained by @meownoirsoft
+This AppImage packaging is maintained by @meownoirsoft. I will typically update this repo within a few days of a new update to Dalamud or other deps.
 
----
+### Feedback and Contributions
+Issues and pull requests are welcome.
+If you encounter compatibility problems or want to help automate the build pipeline, feel free to open an issue.
 
-## 📬 Feedback & Issues
-
-Please open an issue if you encounter bugs, compatibility problems, or need help. PRs welcome if you want to help improve Linux support or automate the build process.
-
----
-
-## 🎮 Enjoy the game, Warrior of Light!
+Enjoy the game, Warrior of Light.
